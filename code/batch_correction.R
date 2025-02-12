@@ -9,6 +9,8 @@ library("readxl")
 
 input_data <- function(dataset_folder, panel_xcl, md_xcl) {
 
+  # assign the function commands to variables that will be used throughout
+  # the script
   data_dir <- dataset_folder
   path_panel <- panel_xcl
   path_md <- md_xcl
@@ -23,14 +25,16 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
 
 
   check_matching_panel_markers <- function(panel, markers){
-    # Function to check if markers in panel match markers and fix them if they don't match
+    # Function to check if markers in panel match markers
+    #and fix them if they don't match
     panel_unmatched <- panel[!pull(panel, antigen) %in% markers,]
     panel_none <- panel[panel$marker_class == "none",]
     if(nrow(panel_unmatched) > nrow(panel_none)){
       # get unmatched markers values
       markers_unmatched <- markers[!markers %in% pull(panel, "antigen")]
       # get unmatched panel values
-      panel_unmatched_vector <- pull(panel_unmatched[!panel_unmatched$marker_class == "none",], "antigen")
+      panel_unmatched_vector <- pull(
+        panel_unmatched[!panel_unmatched$marker_class == "none",], "antigen")
       # print unmatched values
       print("Warning: Markers do not match panel antigens", quote = FALSE)
 
@@ -38,7 +42,9 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
       replacement_map <- setNames(markers_unmatched, panel_unmatched_vector)
 
       # Print replacements
-      cat(paste(panel_unmatched_vector, " is being replaced with ", markers_unmatched, sep = "", collapse = "\n"), "\n")
+      cat(paste(panel_unmatched_vector,
+                " is being replaced with ",
+                markers_unmatched, sep = "", collapse = "\n"), "\n")
 
       # Replace values in 'panel$antigen'
       panel$antigen <- ifelse(panel$antigen %in% panel_unmatched_vector,
@@ -51,6 +57,7 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
   # Check if markers in panel match markers and fix them if they don't match
   panel <- check_matching_panel_markers(panel, markers)
 
+  # returns both the markers and the panel to spot check
   markers_and_panel <- list(markers, panel)
   return(markers_and_panel)
 
