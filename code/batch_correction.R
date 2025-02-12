@@ -21,6 +21,7 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
     pull(antigen) %>%
     str_remove_all("[ _-]")
 
+
   check_matching_panel_markers <- function(panel, markers){
     # Function to check if markers in panel match markers and fix them if they don't match
     panel_unmatched <- panel[!pull(panel, antigen) %in% markers,]
@@ -43,19 +44,25 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
       panel$antigen <- ifelse(panel$antigen %in% panel_unmatched_vector,
                               replacement_map[panel$antigen],
                               panel$antigen)}
-    return(panel)
+
+
   }
 
   # Check if markers in panel match markers and fix them if they don't match
   panel <- check_matching_panel_markers(panel, markers)
 
+  markers_and_panel <- list(markers, panel)
+  return(markers_and_panel)
+
 }
 
 input_data(dataset_folder =
-             "./data/raw_data/",
+             "./data/raw_data/test_FCS_files/",
            panel_xcl =
-             "./data/"
+             "./data/panel_md_test/samples_panel_test.xlsx",
+           md_xcl = "./data/panel_md_test/samples_md_test.xlsx")
 
-)
+
+
 
 
