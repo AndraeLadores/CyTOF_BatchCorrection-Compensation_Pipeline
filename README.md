@@ -1,6 +1,6 @@
 ## This is an R script to easily streamline the batch correction and compensation part of CyTOF analysis 
 
-By Andrae "Dodge"" Ladores from UCSF's Spitzer Lab, created on 02/11/2025. 
+By Andrae "Dodge" Ladores from UCSF's Spitzer Lab, created on 02/11/2025. 
 This was originally pulled from: https://github.com/sguldberg/pipelines/tree/main on 1/2/2025.
 But it is altered to cater towards solely the batch correction & compensation parts.
 
@@ -29,4 +29,7 @@ But it is altered to cater towards solely the batch correction & compensation pa
 ### 1/29/25
 - There's an error: vector memory exhausted (limit reached?) that occurs when making an SCE and/or converting SCE into an FCS.
 - This was solved by "overwrite = TRUE" in the compCytof line (chunk 404)
-- Not sure if this drastically changes our dataset or not but we will see once we look at it
+- Not sure if this drastically changes our dataset or not but we will see once we look at it.
+
+### 2/12/25
+- Started on batch_correction script and fixed some formatting issues while trying to improve the code.
