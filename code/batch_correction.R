@@ -61,6 +61,30 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
   markers_and_panel <- list(markers, panel)
   return(markers_and_panel)
 
+  ## set file path to 'output folder
+  output_folder <- file.path("./output/", "batch_corrected")
+
+  # create new folder
+  dir.create(output_folder)
+
+  ## This section is for the uncorrected
+
+  # Compile fcs files and preprocess
+  uncorrected <- prepare_data(data_dir = data_dir,
+                              markers = markers,
+                              metadata = md,
+                              sample_ids = "sample_id", # column in metadata
+                              batch_ids = "run", # column in metadata
+                              filename_col = "file_name", # column in metadata
+                              anchor = "anchor", # column in metadata
+                              # condition = "condition", # column in metadata
+                              down_sample = FALSE,
+                              # sample_size = 500000,
+                              seed = 1234,
+                              cofactor = 5)
+  file_name = "./output/batch_corrected/cycombine_raw_uncorrected.RDS"
+  saveRDS(uncorrected, file = file_name)
+
 }
 
 input_data(dataset_folder =
@@ -69,7 +93,9 @@ input_data(dataset_folder =
              "./data/panel_md_test/samples_panel_test.xlsx",
            md_xcl = "./data/panel_md_test/samples_md_test.xlsx")
 
-
+dataset_folder = "./data/raw_data/test_FCS_files/"
+panel_xcl = "./data/panel_md_test/samples_panel_test.xlsx"
+md_xcl = "./data/panel_md_test/samples_md_test.xlsx"
 
 
 
