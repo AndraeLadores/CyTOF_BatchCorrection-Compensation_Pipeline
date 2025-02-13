@@ -15,7 +15,14 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
   path_panel <- panel_xcl
   path_md <- md_xcl
   panel <- read_excel(path_panel)
-  md<- read_excel(path_md)
+  md <- read_excel(path_md)
+
+  print("Data directory:")
+  print(data_dir)
+  print("Panel:")
+  print(panel)
+  print("Metadata:")
+  print(md)
 
   # Markers of interest (to batch correct on)
   markers <- panel %>%
@@ -59,9 +66,10 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
 
   # returns both the markers and the panel to spot check
   markers_and_panel <- list(markers, panel)
-  return(markers_and_panel)
+  print("This is the markers and panels to spot check:")
+  print(markers_and_panel)
 
-  ## set file path to 'output folder
+  ## set file path to 'output' folder
   output_folder <- file.path("./output/", "batch_corrected")
 
   # create new folder
