@@ -32,4 +32,7 @@ But it is altered to cater towards solely the batch correction & compensation pa
 - Not sure if this drastically changes our dataset or not but we will see once we look at it.
 
 ### 2/12/25
-- Started on batch_correction script and fixed some formatting issues while trying to improve the code.
+- Started on batch_correction function and fixed some formatting issues while trying to improve the code.
+
+### 2/13/25
+- Added the batch correction code in the function.
