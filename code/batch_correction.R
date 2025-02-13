@@ -93,6 +93,22 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
   file_name = "./output/batch_corrected/cycombine_raw_uncorrected.RDS"
   saveRDS(uncorrected, file = file_name)
 
+  ## This section is for the corrected
+
+  # Run batch correction using anchors
+  corrected <- uncorrected %>%
+    batch_correct(markers = markers,
+                  # "rank" is recommended when combining data
+                  # with heavy batch effects
+                  norm_method = "scale",
+                  # Consider a larger value,
+                  # if results are not convincing (e.g. 100)
+                  rlen = 10,
+                  # covar = "condition",
+                  anchor = "anchor")
+  file_name = "./output/batch_corrected/cycombine_raw_corrected.RDS"
+  saveRDS(corrected, file = file_name)
+
 }
 
 input_data(dataset_folder =
