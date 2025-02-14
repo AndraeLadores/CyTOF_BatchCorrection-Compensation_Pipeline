@@ -58,6 +58,8 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
                               replacement_map[panel$antigen],
                               panel$antigen)}
 
+    # Return the "panel" if there are any changes so it can be used downstream
+    return(panel)
 
   }
 
@@ -109,6 +111,21 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
   file_name = "./output/batch_corrected/cycombine_raw_corrected.RDS"
   saveRDS(corrected, file = file_name)
 
+  # Turning corrected RDS into an SCE
+  sce <- df2SCE(corrected,
+                markers = markers,
+                sample_col = "sample",
+                panel = panel,
+                panel_channel = "fcs_colname",
+                panel_antigen = "antigen",
+                panel_type = "marker_class")
+
+  # Turning SCE into an FCS
+  sce2FCS(sce,
+          split_by = "sample_id",
+          assay = "counts",
+          randomize = TRUE,
+          outdir = "./output/batch_corrected/batch_corrected_fcs_leukocytes")
 }
 
 input_data(dataset_folder =
