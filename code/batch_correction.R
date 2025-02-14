@@ -126,6 +126,36 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
           assay = "counts",
           randomize = TRUE,
           outdir = "./output/batch_corrected/batch_corrected_fcs_leukocytes")
+
+  # This is a code to make sure the outputted fcs file names
+  # are matching with the original fcs file names which is more convenient
+
+  # Read in the correct names
+  correct_names <- md$file_name
+  # Read in the wrong named files
+  wrong_names <- list.files(
+    "./output/batch_corrected/batch_corrected_fcs_leukocytes/")
+  # excluding annotation.txt file
+  exclude_file <- "annotation.txt"
+  wrong_names <- setdiff(wrong_names, exclude_file)
+  # Safety check to match number of files to number of names
+  if (length(correct_names) != length(wrong_names)) {
+  stop("Number of files doesn't match the number of new names, pls fix or
+       output dir does NOT exist")
+}
+
+  # Rename the files
+  for (i in seq_along(wrong_names)) {
+    wrong_file_names <- file.path(
+      "./output/batch_corrected/batch_corrected_fcs_leukocytes/",
+                                  wrong_names[i])
+    correct_file_names <- file.path(
+      "./output/batch_corrected/batch_corrected_fcs_leukocytes/",
+                                    correct_names[i])
+
+    file.rename(wrong_file_names,correct_file_names)
+  }
+
 }
 
 input_data(dataset_folder =
