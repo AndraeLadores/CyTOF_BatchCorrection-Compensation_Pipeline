@@ -31,9 +31,10 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
     str_remove_all("[ _-]")
 
 
+  # Function to check if markers in panel match markers
+  # and fix them if they don't match
   check_matching_panel_markers <- function(panel, markers){
-    # Function to check if markers in panel match markers
-    #and fix them if they don't match
+
     panel_unmatched <- panel[!pull(panel, antigen) %in% markers,]
     panel_none <- panel[panel$marker_class == "none",]
     if(nrow(panel_unmatched) > nrow(panel_none)){
@@ -140,8 +141,8 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
   wrong_names <- setdiff(wrong_names, exclude_file)
   # Safety check to match number of files to number of names
   if (length(correct_names) != length(wrong_names)) {
-  stop("Number of files doesn't match the number of new names, pls fix or
-       output dir does NOT exist")
+  stop("Number of files doesn't match the number of new fcs names, or there is
+       an error in the output directory. Please Fix.")
 }
 
   # Rename the files
@@ -155,6 +156,8 @@ input_data <- function(dataset_folder, panel_xcl, md_xcl) {
 
     file.rename(wrong_file_names,correct_file_names)
   }
+
+  print("End of function")
 
 }
 
