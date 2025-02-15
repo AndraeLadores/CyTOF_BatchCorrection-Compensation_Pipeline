@@ -35,4 +35,7 @@ But it is altered to cater towards solely the batch correction & compensation pa
 - Started on batch_correction function and fixed some formatting issues while trying to improve the code.
 
 ### 2/13/25
-- Added the batch correction code in the function.
+- Added the batch correction code in the function and some spot check codes.
+
+### 2/14/25
+- Fix the batch correction code section and implemented some more safety code just in case there is something that is missing or wrong down the code.
