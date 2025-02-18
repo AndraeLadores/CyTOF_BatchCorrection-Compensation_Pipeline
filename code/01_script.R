@@ -3,9 +3,11 @@
 
 source("./code/functions/batch_correction.R")
 
-input_data(dataset_folder = "./",
-           panel_xcl = ,
-           md_xcl = )
+# This is for batch correction, make sure necessary packages are installed
+batch_correction(dataset_folder = "./data/raw_data/test_FCS_files/",
+           panel_xcl = "./data/panel_md_test/samples_panel_test.xlsx",
+           md_xcl = "./data/panel_md_test/samples_md_test.xlsx")
+
 
 
 
