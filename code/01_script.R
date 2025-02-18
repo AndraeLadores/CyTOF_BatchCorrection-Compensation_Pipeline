@@ -1,19 +1,11 @@
 # Script created on 02/11/2025
+# This is a script to batch correct and compensate.
 
-# Load all necessary packages
-library("cyCombine")
-library("magrittr")
-library("stringr")
-library("dplyr")
-library("readxl")
+source("./code/functions/batch_correction.R")
 
-# create new folder for bath_corrected items
-
-## set file path to 'output folder
-output_folder <- file.path("./output/", "batch_corrected")
-
-# create new folder
-dir.create(output_folder)
+input_data(dataset_folder = "./",
+           panel_xcl = ,
+           md_xcl = )
 
 
 
