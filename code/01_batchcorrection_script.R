@@ -1,5 +1,5 @@
 # Script created on 02/11/2025
-# This is a script to batch correct and compensate.
+# This is a script to batch correct.
 
 source("./code/functions/batch_correction.R")
 
