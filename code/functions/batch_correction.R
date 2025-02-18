@@ -161,15 +161,5 @@ batch_correction <- function(dataset_folder, panel_xcl, md_xcl) {
 
 }
 
-batch_correction(dataset_folder =
-             "./data/raw_data/test_FCS_files/",
-           panel_xcl =
-             "./data/panel_md_test/samples_panel_test.xlsx",
-           md_xcl = "./data/panel_md_test/samples_md_test.xlsx")
-
-dataset_folder = "./data/raw_data/test_FCS_files/"
-panel_xcl = "./data/panel_md_test/samples_panel_test.xlsx"
-md_xcl = "./data/panel_md_test/samples_md_test.xlsx"
-
 
 
