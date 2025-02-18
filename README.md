@@ -39,3 +39,6 @@ But it is altered to cater towards solely the batch correction & compensation pa
 
 ### 2/14/25
 - Fix the batch correction code section and implemented some more safety code just in case there is something that is missing or wrong down the code.
+
+### 2/18/25
+- Finished formatting the batch correction part and created function for compensation section. Tested and working on small files, but will test on a bigger dataset.
