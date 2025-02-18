@@ -12,23 +12,37 @@ library(viridis)
 library(diffcyt)
 library(dplyr)
 
-compensate_bcorrected <- function(b_corrected_fcsfiles,
-                                  panel_xcl,
-                                  md_xcl,
-                                  spillover_file) {
+compensate <- function(FCS_files,
+                       panel_xcl,
+                       md_xcl,
+                       spillover_file) {
 
   ## Read in md/panel files and batch corrected FCS files
   # read in desired FCS files
-  path_fcs <- b_corrected_fcsfiles
-  dataset <- read.flowSet(path=path_fcs, pattern="fcs$")
+  path_fcs <- FCS_files
+  dataset <- read.flowSet(path = path_fcs, pattern = "fcs$")
   # read in metadata
   path_md <- md_xcl
   md <- read_excel(path_md)
   # read in panel
-  path_panel <- panel_xcl
-  panel <- read_excel(path_panel)
-  # spot check panel
+  #read in panel information
+  if(exists("panel") == TRUE) {
+    panel <- panel %>%
+      dplyr::filter(marker_class != "none")
+  } else {
+    path_panel <- panel_xcl
+    panel <- read_excel(path_panel)
+  }
   head(data.frame(panel))
+  #spot check that panel matches flowset
+  all(panel$fcs_colname %in% colnames(dataset))
+  print("If False, please check if you're using the correct FCS files")
+
+  # spot check panel
+  print("Spot check panel")
+  head(data.frame(panel))
+
+  print("Finished reading in files")
 
   ## Creating SCE object
   # specify levels for conditions & sample IDs to assure desired ordering
@@ -50,9 +64,12 @@ compensate_bcorrected <- function(b_corrected_fcsfiles,
   sce <- prepData(dataset, panel, md, features = panel$fcs_colname,
                   md_cols = md_cols)
 
+  print("Finished creating SCE object")
+
   ## Compensation section
 
   # read in spillover matrix
+  print("Reading in spillover matrix")
   spillover <- data.frame(read_excel(spillover_file))
   # set rownames to metal channels
   rownames(spillover) <- spillover$...1
@@ -63,25 +80,35 @@ compensate_bcorrected <- function(b_corrected_fcsfiles,
   # set any NA values to 0
   spillover[is.na(spillover)] <- 0
 
+  print("Starting compensation")
   # compensate
   # Notice this is "overwrite = TRUE" so it will overwrite and replace old files
   sce <- compCytof(sce, spillover, method = "nnls", overwrite = TRUE)
 
+  print("Compensation finished")
+
+  print("Converting SCE to FCS files for Cell Engine")
   # From SCE to FCS files for Cell Engine
   fs <- sce2fcs(sce, split_by = "sample_id", assay = "counts")
   all(c(fsApply(fs, nrow)) == table(sce$sample_id))
   ids <- fsApply(fs, identifier)
   # write out each FCS file to the path specified
-  dir.create(file.path("./CATALYST/comp_fcs"))
+  dir.create(file.path("./output/compensation/comp_fcs"))
   for (id in ids) {
     ff <- fs[[id]]                     # subset 'flowFrame'
     fn <- sprintf("comp_%s.fcs", id) # specify output name that includes ID
-    fn <- file.path("./CATALYST/comp_fcs", fn)         # construct output path
+    # construct output path
+    fn <- file.path("./output/compensation/comp_fcs", fn)
     write.FCS(ff, fn)                  # write frame to FCS
   }
 
+  print("Function has finished running. Check for the expected output files")
 }
 
+compensate(FCS_files = "./data/raw_data/test_FCS_files/",
+          panel_xcl = "./data/panel_md_test/samples_panel_test.xlsx",
+          md_xcl = "./data/panel_md_test/samples_md_test.xlsx",
+          spillover_file = "./data/cytof_spillover_matrix_wDi.xlsx")
 
 
 
