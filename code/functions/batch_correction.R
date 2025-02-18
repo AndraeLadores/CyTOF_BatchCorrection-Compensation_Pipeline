@@ -7,11 +7,11 @@ library("stringr")
 library("dplyr")
 library("readxl")
 
-batch_correction <- function(dataset_folder, panel_xcl, md_xcl) {
+batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
 
   # assign the function commands to variables that will be used throughout
   # the script
-  data_dir <- dataset_folder
+  data_dir <- raw_dataset_folder
   path_panel <- panel_xcl
   path_md <- md_xcl
   panel <- read_excel(path_panel)
