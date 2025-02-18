@@ -19,6 +19,8 @@ compensate <- function(FCS_files,
 
   ## Read in md/panel files and batch corrected FCS files
   # read in desired FCS files
+  print("Reading in all desired files")
+
   path_fcs <- FCS_files
   dataset <- read.flowSet(path = path_fcs, pattern = "fcs$")
   # read in metadata
@@ -36,11 +38,8 @@ compensate <- function(FCS_files,
   head(data.frame(panel))
   #spot check that panel matches flowset
   all(panel$fcs_colname %in% colnames(dataset))
-  print("If False, please check if you're using the correct FCS files")
-
-  # spot check panel
-  print("Spot check panel")
-  head(data.frame(panel))
+  print("If 'False' stated here,
+        please check if you're using the correct FCS files")
 
   print("Finished reading in files")
 
@@ -59,6 +58,7 @@ compensate <- function(FCS_files,
   # create new folder
   dir.create(output_folder)
 
+  print("Creating SCE object from inputted FCS files")
   # construct SingleCellExperiment
   # Make sure FCS files match md "file_name", fix upstream
   sce <- prepData(dataset, panel, md, features = panel$fcs_colname,
