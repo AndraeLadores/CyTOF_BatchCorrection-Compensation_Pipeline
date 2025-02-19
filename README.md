@@ -17,7 +17,7 @@ But it is altered to cater towards solely the batch correction & compensation pa
 
 3. Drag and drop the necessary files you need to the correct folders, these are the **panel**, **md**, **raw FCS files**, and **spillover matrix** if you are compensating.
 - By default and as an example, there are template files provided.
-- **It's important to note that these FCS files are alrady pre-processed, meaning they have gone through normalization and bead removal.**
+- **It's important to note that these FCS files are already pre-processed, meaning they have gone through normalization and bead removal.**
 
 4. Install all necessary packages or make sure they are installed:
 ``` 

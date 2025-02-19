@@ -8,8 +8,8 @@ source("./code/functions/batch_correction.R")
 # Use the function and replace paths if needed.
 batch_correction(
   dataset_folder = "./data/raw_data/test_FCS_files/", # FCS files/folder
-  panel_xcl = "./data/panel_md_test/samples_panel_test.xlsx", # Panel excel file
-  md_xcl = "./data/panel_md_test/samples_md_test.xlsx") # Metadata excel file
+  panel_xcl = "./data/panel_md_template/samples_panel_template.xlsx", # Panel excel file
+  md_xcl = "./data/panel_md_template/samples_md_template.xlsx") # Metadata excel file
 
 
 

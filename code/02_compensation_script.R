@@ -8,6 +8,6 @@ source("./code/functions/compensation.R")
 # Use the function and replace paths if needed.
 compensate(
   FCS_files = "./data/raw_data/test_FCS_files/", # Desired FCS files
-  panel_xcl = "./data/panel_md_test/samples_panel_test.xlsx", # Panel excel file
-  md_xcl = "./data/panel_md_test/samples_md_test.xlsx", # Metadata excel file
-  spillover_file = "./data/cytof_spillover_matrix_wDi.xlsx") # Spillover file
+  panel_xcl = "./data/panel_md_template/samples_panel_template.xlsx", # Panel excel file
+  md_xcl = "./data/panel_md_template/samples_md_template.xlsx", # Metadata excel file
+  spillover_file = "./data/spillover/cytof_spillover_matrix_template.xlsx") # Spillover file
