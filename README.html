@@ -355,13 +355,72 @@ display: none;
 <div id="this-is-an-r-script-to-easily-streamline-the-batch-correction-and-compensation-part-of-cytof-analysis" class="section level2">
 <h2>This is an R script to easily streamline the batch correction and
 compensation part of CyTOF analysis</h2>
-<p>By Andrae “Dodge”” Ladores from UCSF’s Spitzer Lab, created on
+<p>By Andrae “Dodge” Ladores from UCSF’s Spitzer Lab, created on
 02/11/2025. This was originally pulled from: <a href="https://github.com/sguldberg/pipelines/tree/main" class="uri">https://github.com/sguldberg/pipelines/tree/main</a> on
 1/2/2025. But it is altered to cater towards solely the batch correction
 &amp; compensation parts.</p>
+<hr />
+</div>
+<div id="instructions" class="section level2">
+<h2>Instructions</h2>
+<ol style="list-style-type: decimal">
+<li><p>Download the entire git package provided here</p></li>
+<li><p>Open the R project. This is important for working directory
+purposes.</p></li>
+</ol>
+<ul>
+<li>There should be, by default, a <em>code</em>, <em>data</em>, and
+<em>output</em> folder.</li>
+<li>The <em>code</em> folder has the <strong>necessary</strong> scripts
+and functions.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Drag and drop the necessary files you need to the correct folders,
+these are the <strong>panel</strong>, <strong>md</strong>, <strong>raw
+FCS files</strong>, and <strong>spillover matrix</strong> if you are
+compensating.</li>
+</ol>
+<ul>
+<li>By default and as an example, there are template files provided</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Install all necessary packages or make sure they are installed:</li>
+</ol>
+<pre><code>install.packages(&#39;devtools&#39;)
+install.packages(&#39;XML&#39;)
+install.packages(&#39;stringr&#39;)
+install.packages(&#39;tidyverse&#39;)
+install.packages(&#39;cowplot&#39;)
+install.packages(&#39;viridis&#39;)
+install.packages(&#39;RColorBrewer&#39;)
+install.packages(&#39;dplyr&#39;)
+install.packages(&#39;xlsx&#39;)
+install.packages(&#39;devtools&#39;)
+install.packages(&#39;remotes&#39;)
+
+BiocManager::install(&quot;flowCore&quot;)
+BiocManager::install(&quot;CATALYST&quot;)
+BiocManager::install(&quot;diffcyt&quot;)
+
+library(devtools)
+install_github(&quot;ParkerICI/premessa&quot;)
+install_github(&quot;nolanlab/cytofCore&quot;)
+
+# cyCombine is only necessary for batch effect correction
+setRepositories(ind = c(1:6, 8))
+devtools::install_github(&quot;biosurf/cyCombine&quot;) </code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>In <strong>R</strong>, open either
+<em>01_batchcorrection_script.R</em> or
+<em>02_compensation_script.R</em>, this depends on what you want to
+run.</li>
+</ol>
 </div>
 <div id="log" class="section level2">
 <h2>Log</h2>
+<div id="this-section-was-logged-in-r-markdown" class="section level3">
+<h3>This section was logged in R markdown</h3>
+</div>
 <div id="section" class="section level3">
 <h3>1/2/25</h3>
 <ul>
@@ -410,7 +469,48 @@ occurs when making an SCE and/or converting SCE into an FCS.</li>
 <li>This was solved by “overwrite = TRUE” in the compCytof line (chunk
 404)</li>
 <li>Not sure if this drastically changes our dataset or not but we will
-see once we look at it</li>
+see once we look at it.</li>
+</ul>
+</div>
+<div id="this-section-was-logged-in-normal-r-scripts" class="section level3">
+<h3>This section was logged in normal R scripts</h3>
+</div>
+<div id="section-5" class="section level3">
+<h3>2/12/25</h3>
+<ul>
+<li>Started on batch_correction function and fixed some formatting
+issues while trying to improve the code.</li>
+</ul>
+</div>
+<div id="section-6" class="section level3">
+<h3>2/13/25</h3>
+<ul>
+<li>Added the batch correction code in the function and some spot check
+codes.</li>
+</ul>
+</div>
+<div id="section-7" class="section level3">
+<h3>2/14/25</h3>
+<ul>
+<li>Fix the batch correction code section and implemented some more
+safety code just in case there is something that is missing or wrong
+down the code.</li>
+</ul>
+</div>
+<div id="section-8" class="section level3">
+<h3>2/18/25</h3>
+<ul>
+<li>Finished formatting the batch correction part and created function
+for compensation section. Tested and working on small files, but will
+test on a bigger dataset.</li>
+</ul>
+</div>
+<div id="section-9" class="section level3">
+<h3>2/19/25</h3>
+<ul>
+<li>Fixed a huge issue when running the compensation script. It
+basically wouldn’t call the function I created, but it’s fixed. It’s
+good to remember to make sure you’re calling the correct file.</li>
 </ul>
 </div>
 </div>

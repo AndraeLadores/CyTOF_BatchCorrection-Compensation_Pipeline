@@ -1,6 +1,7 @@
 ## This is an R script to easily streamline the batch correction and compensation part of CyTOF analysis 
 
 By Andrae "Dodge" Ladores from UCSF's Spitzer Lab, created on 02/11/2025. 
+
 This was originally pulled from: https://github.com/sguldberg/pipelines/tree/main on 1/2/2025.
 But it is altered to cater towards solely the batch correction & compensation parts.
 
