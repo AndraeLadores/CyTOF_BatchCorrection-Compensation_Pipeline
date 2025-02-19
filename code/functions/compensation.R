@@ -22,24 +22,23 @@ compensate <- function(FCS_files,
   print("Reading in all desired files")
 
   path_fcs <- FCS_files
-  dataset <- read.flowSet(path = path_fcs, pattern = "fcs$")
+  files <- list.files(path_fcs, pattern = "fcs$", full.names = TRUE)
+  dataset <- lapply(files, read.FCS)
   # read in metadata
   path_md <- md_xcl
   md <- read_excel(path_md)
   # read in panel
   #read in panel information
-  if(exists("panel") == TRUE) {
-    panel <- panel %>%
+  if(exists("panel_xcl") == TRUE) {
+    panel <- read_excel(panel_xcl) %>%
       dplyr::filter(marker_class != "none")
   } else {
-    path_panel <- panel_xcl
-    panel <- read_excel(path_panel)
+    stop("Panel path not provided")
   }
   head(data.frame(panel))
   #spot check that panel matches flowset
   all(panel$fcs_colname %in% colnames(dataset))
-  print("If 'False' stated here,
-        please check if you're using the correct FCS files")
+  print("If 'False', please check if you're using the correct FCS files")
 
   print("Finished reading in files")
 
@@ -104,7 +103,6 @@ compensate <- function(FCS_files,
 
   print("Function has finished running. Check for the expected output files")
 }
-
 
 
 
