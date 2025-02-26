@@ -100,3 +100,6 @@ devtools::install_github("biosurf/cyCombine")
 
 ### 2/19/25
 - Fixed a huge issue when running the compensation script. It basically wouldn't call the function I created, but it's fixed. It's good to remember to make sure you're calling the correct file.
+
+### 2/26/25
+- Tested with a bigger dataset and vector limit error keeps happening so I'm adding memory optimization codes to help prevent that error in bigger datasets.
