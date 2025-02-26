@@ -123,18 +123,20 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
 
   print("Turning the corrected .RDS into an SCE.")
   # Turning corrected RDS into an SCE
-  sce <- df2SCE(corrected,
+  sce <- df2SCE("./output/batch_corrected/cycombine_raw_corrected.RDS",
                 markers = markers,
                 sample_col = "sample",
                 panel = panel,
                 panel_channel = "fcs_colname",
                 panel_antigen = "antigen",
                 panel_type = "marker_class")
-
   print("Finished.")
 
-  print("Now turning SCE back into FCS files:")
+  # This is for memory optimization
+  rm(markers_and_panel, panel, md) # Removes uneeded obj from environment
+  gc() # Forces garbage cleanup
 
+  print("Now turning SCE back into FCS files:")
   # Turning SCE into an FCS
   sce2FCS(sce,
           split_by = "sample_id",
