@@ -99,11 +99,9 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
   saveRDS(uncorrected, file = file_name)
 
   print("Finished uncorrected section.")
-
   ## This section is for the corrected
 
   print("Starting batch correction:")
-
   # Run batch correction using anchors
   corrected <- uncorrected %>%
     batch_correct(markers = markers,
@@ -117,11 +115,13 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
                   anchor = "anchor")
   file_name = "./output/batch_corrected/cycombine_raw_corrected.RDS"
   saveRDS(corrected, file = file_name)
-
   print("Finished batch correction!")
 
-  print("Turning the corrected .RDS into an SCE.")
+  # This is for memory optimization
+  rm(uncorrected, corrected) # Removes huge uncorrected & corrected obj
+  gc() # Forces garbage cleanup
 
+  print("Turning the corrected .RDS into an SCE.")
   # Turning corrected RDS into an SCE
   sce <- df2SCE(corrected,
                 markers = markers,
