@@ -80,6 +80,8 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
 
   ## This section is for the uncorrected
 
+  print("Starting the uncorrected section:")
+
   # Compile fcs files and preprocess
   uncorrected <- prepare_data(data_dir = data_dir,
                               markers = markers,
@@ -96,7 +98,11 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
   file_name = "./output/batch_corrected/cycombine_raw_uncorrected.RDS"
   saveRDS(uncorrected, file = file_name)
 
+  print("Finished uncorrected section.")
+
   ## This section is for the corrected
+
+  print("Starting batch correction:")
 
   # Run batch correction using anchors
   corrected <- uncorrected %>%
@@ -112,6 +118,10 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
   file_name = "./output/batch_corrected/cycombine_raw_corrected.RDS"
   saveRDS(corrected, file = file_name)
 
+  print("Finished batch correction!")
+
+  print("Turning the corrected .RDS into an SCE.")
+
   # Turning corrected RDS into an SCE
   sce <- df2SCE(corrected,
                 markers = markers,
@@ -121,12 +131,18 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
                 panel_antigen = "antigen",
                 panel_type = "marker_class")
 
+  print("Finished.")
+
+  print("Now turning SCE back into FCS files:")
+
   # Turning SCE into an FCS
   sce2FCS(sce,
           split_by = "sample_id",
           assay = "counts",
           randomize = TRUE,
           outdir = "./output/batch_corrected/batch_corrected_fcs_leukocytes")
+
+  print("Finished.")
 
   # This is a code to make sure the outputted fcs file names
   # are matching with the original fcs file names which is more convenient
@@ -157,7 +173,7 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
     file.rename(wrong_file_names,correct_file_names)
   }
 
-  print("End of function")
+  print("Function has finished running. Check output folder!")
 
 }
 
