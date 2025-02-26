@@ -97,10 +97,9 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
                               cofactor = 5)
   file_name = "./output/batch_corrected/cycombine_raw_uncorrected.RDS"
   saveRDS(uncorrected, file = file_name)
-
   print("Finished uncorrected section.")
-  ## This section is for the corrected
 
+  ## This section is for the corrected
   print("Starting batch correction:")
   # Run batch correction using anchors
   corrected <- uncorrected %>%
@@ -133,7 +132,7 @@ batch_correction <- function(raw_dataset_folder, panel_xcl, md_xcl) {
   print("Finished.")
 
   # This is for memory optimization
-  rm(markers_and_panel, panel, md) # Removes uneeded obj from environment
+  rm(markers_and_panel) # Removes unneeded obj from environment
   gc() # Forces garbage cleanup
 
   print("Now turning SCE back into FCS files:")
