@@ -103,3 +103,16 @@ devtools::install_github("biosurf/cyCombine")
 
 ### 2/26/25
 - Tested with a bigger dataset and vector limit error keeps happening so I'm adding memory optimization codes to help prevent that error in bigger datasets.
+
+### 3/31/25
+- Working on integrating pipeline to UCSF Wynton servers with dedicated memory to run huge datasets.
+- Quick steps:
+1. Log in to servers using bash (cluster first and then development node)
+2. Open R studio GUI to make sure it works (will need two terminals and use temp pw provided to open on your local browser)
+
+After making sure R studio runs. We will need to download our project folder so we can use it on Wynton.
+
+3. On your local bash terminal, use this template to download the project folder into your Wynton directory (this is assuming that you have this git repository downloaded on your local computer, which I highly recommend)
+
+### 4/7/25
+- Fix some issues with the batch correction code - related to optimization lines I implemented but deleted since we will be running these via server.
