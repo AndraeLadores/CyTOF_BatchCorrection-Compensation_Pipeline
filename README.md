@@ -116,3 +116,7 @@ After making sure R studio runs. We will need to download our project folder so 
 
 ### 4/7/25
 - Fix some issues with the batch correction code - related to optimization lines I implemented but deleted since we will be running these via server.
+
+### 4/30/25
+- Started working on code that caters towards Shell. This is so it will be easier to run the codes on Wynton. This also makes it even more streamlined and easier for users who aren't too experienced in coding.
+- Since I organized the files and folders more, there is an issue with the batch correction shell script. It has something to do with the directories. Will work on this to fix asap and then create the respective interactive shell script for the compensation part.
