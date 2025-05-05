@@ -120,3 +120,8 @@ After making sure R studio runs. We will need to download our project folder so 
 ### 4/30/25
 - Started working on code that caters towards Shell. This is so it will be easier to run the codes on Wynton. This also makes it even more streamlined and easier for users who aren't too experienced in coding.
 - Since I organized the files and folders more, there is an issue with the batch correction shell script. It has something to do with the directories. Will work on this to fix asap and then create the respective interactive shell script for the compensation part.
+
+### 5/5/25
+- Fix shell script error with directories. Shell script for batch correction works great now. I plan on making another shell script for compensation.
+- I will also look into how to make it even more user-friendly since manually putting file paths for each condition can be demanding and it's frustrating to restart due to a small problem or mistake.
+- I will most likely look into a way that actually shows the directory and you are able to just choose a specific number for the corresponding file you are looking into. I will also add "if" and "exit" statements for the user to make sure they don't proceed with the wrong file or make an error.
