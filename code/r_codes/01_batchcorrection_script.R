@@ -5,7 +5,7 @@
 setwd(dirname(getwd()))
 
 # Call the function
-source("./functions/batch_correction.R")
+source("./code/r_codes/functions/batch_correction.R")
 
 # Code to let shell script use multiple parameters
 args <- commandArgs(trailingOnly = TRUE)

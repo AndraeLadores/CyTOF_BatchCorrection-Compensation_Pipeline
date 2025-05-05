@@ -29,6 +29,6 @@ echo "Raw data folder: $raw_dataset_folder"
 echo "Panel sheet: $panel_xcl"
 echo "Metadata file: $md_xcl"
 
-Rscript ./TESTCOPY01_batchcorrection_script.R "$raw_dataset_folder" "$panel_xcl" "$md_xcl"
+Rscript ./r_codes/01_batchcorrection_script.R "$raw_dataset_folder" "$panel_xcl" "$md_xcl"
 
 
