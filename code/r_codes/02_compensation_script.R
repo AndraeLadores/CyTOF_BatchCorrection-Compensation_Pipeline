@@ -2,7 +2,7 @@
 # This is a script for compensation, make sure necessary packages are installed.
 
 # Call the compensation function
-source("./code/functions/compensation.R")
+source("./code/r_codes/functions/compensation.R")
 
 # Make sure the desired paths are correct.
 # Use the function and replace paths if needed.
