@@ -129,3 +129,4 @@ After making sure R studio runs. We will need to download our project folder so 
 ### 5/12/25
 - Created shell script for compensation part and also made changes to compensation R codes to accomodate for the compensation shell script.
 - I will look into a more user friendly interface but I also need to test it out on Wynton and request a job.
+- I will also change the shell script so it's a little bit easier to read and keep up with what it's outputting.
