@@ -125,3 +125,7 @@ After making sure R studio runs. We will need to download our project folder so 
 - Fix shell script error with directories. Shell script for batch correction works great now. I plan on making another shell script for compensation.
 - I will also look into how to make it even more user-friendly since manually putting file paths for each condition can be demanding and it's frustrating to restart due to a small problem or mistake.
 - I will most likely look into a way that actually shows the directory and you are able to just choose a specific number for the corresponding file you are looking into. I will also add "if" and "exit" statements for the user to make sure they don't proceed with the wrong file or make an error.
+
+### 5/12/25
+- Created shell script for compensation part and also made changes to compensation R codes to accomodate for the compensation shell script.
+- I will look into a more user friendly interface but I also need to test it out on Wynton and request a job.
