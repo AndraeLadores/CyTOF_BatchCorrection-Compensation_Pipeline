@@ -23,7 +23,9 @@ compensate <- function(FCS_files,
 
   path_fcs <- FCS_files
   files <- list.files(path_fcs, pattern = "fcs$", full.names = TRUE)
-  dataset <- lapply(files, read.FCS)
+  dataset <- read.flowSet(files,
+                          transformation = FALSE,
+                          truncate_max_range = FALSE)
   # read in metadata
   path_md <- md_xcl
   md <- read_excel(path_md)
