@@ -12,8 +12,18 @@ echo "------------------------------------------------------------------"
 cd "$(dirname "$0")"
 
 # Input file path for raw dataset folder
-echo "[1] Please input the file path for the raw dataset (this is usually placed in the raw dataset folder under data):"
-read raw_dataset_folder
+echo "[1] Please select a folder for the raw dataset:"
+select dir in ./data/raw_data/*; do
+	if [ -d "$dir" ]; then
+		raw_dataset_folder = "$dir"
+		break
+	else
+		echo "Error in selection. Please look carefully and try again."
+	fi
+done
+
+echo "You selected: $raw_dataset_folder"
+echo "------------------------------------------------------------------"
 
 # Input file path for panel file
 echo "[2] Please input the file path for the panel excel file:"
