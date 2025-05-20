@@ -130,3 +130,7 @@ After making sure R studio runs. We will need to download our project folder so 
 - Created shell script for compensation part and also made changes to compensation R codes to accomodate for the compensation shell script.
 - I will look into a more user friendly interface but I also need to test it out on Wynton and request a job.
 - I will also change the shell script so it's a little bit easier to read and keep up with what it's outputting.
+
+### 5/13/25 - 5/15/25
+- Started working on the code so you can easily select the file paths in the directories. There's an error with the specific code and you aren't able to see the actual folders but instead it shows the line of code
+- I think I will need to expand the folders and see if I can set it as a variable and then look into the directory.
