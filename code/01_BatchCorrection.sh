@@ -12,10 +12,15 @@ echo "------------------------------------------------------------------"
 cd "$(dirname "$0")"
 
 # Input file path for raw dataset folder
-echo "[1] Please select a folder for the raw dataset:"
-select dir in ./data/raw_data/*; do
+echo "[1] Please select a folder corresponding to the number for the raw dataset:"
+
+# Make folder/directories into an array
+folders=(../data/raw_data/*)
+
+# Display folder/file options via select
+select dir in "${folders[@]}"; do
 	if [ -d "$dir" ]; then
-		raw_dataset_folder = "$dir"
+		raw_dataset_folder="$dir"
 		break
 	else
 		echo "Error in selection. Please look carefully and try again."
