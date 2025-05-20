@@ -134,3 +134,6 @@ After making sure R studio runs. We will need to download our project folder so 
 ### 5/13/25 - 5/15/25
 - Started working on the code so you can easily select the file paths in the directories. There's an error with the specific code and you aren't able to see the actual folders but instead it shows the line of code
 - I think I will need to expand the folders and see if I can set it as a variable and then look into the directory.
+
+### 5/19 - 5/20
+- Finally was able to fix the `select` code issue with the folder directories. I should be able to apply these with the rest of the codes for both batch correction and compensation.
