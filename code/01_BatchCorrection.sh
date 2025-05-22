@@ -17,7 +17,7 @@ echo "[1] Please select a folder corresponding to the number for the raw dataset
 # Make folder/directories into an array
 folders=(../data/raw_data/*)
 
-# Display folder/file options via select
+# Display folder options for dataset via select
 select dir in "${folders[@]}"; do
 	if [ -d "$dir" ]; then
 		raw_dataset_folder="$dir"
@@ -30,13 +30,49 @@ done
 echo "You selected: $raw_dataset_folder"
 echo "------------------------------------------------------------------"
 
+##################################################################################
+
 # Input file path for panel file
 echo "[2] Please input the file path for the panel excel file:"
-read panel_xcl
+
+# Make directories into an array
+folders=(../data/panel_md_template/*)
+
+# Display panel file options via select
+select dir in "${folders[@]}"; do
+	if [ -f "$dir" ]; then
+		panel_xcl="$dir"
+		break
+	else
+		echo "Error in selection. Please look carefully and try again."
+	fi
+done
+
+echo "You selected: $panel_xcl"
+echo "------------------------------------------------------------------"
+
+##################################################################################
 
 # Input the file path for the metadata(md)
 echo "[3] Please input the file path for the metadata(md) excel file:"
-read md_xcl
+
+# Make directories into an array
+folders=(../data/panel_md_template/*)
+
+# Display md file options via select
+select dir in "${folders[@]}"; do
+	if [ -f "$dir" ]; then
+		md_xcl="$dir"
+		break
+	else
+		echo "Error in selection. Please look carefully and try again."
+	fi
+done
+
+echo "You selected: $md_xcl"
+echo "------------------------------------------------------------------"
+
+##################################################################################
 
 # File paths overview
 echo "Batch Correction will start with the following inputted files:"
