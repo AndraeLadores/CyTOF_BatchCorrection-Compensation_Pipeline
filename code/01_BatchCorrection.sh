@@ -11,6 +11,8 @@ echo "------------------------------------------------------------------"
 # This sets the parent directory of where the shell script is located (main project folder)
 cd "$(dirname "$0")"
 
+##################################DATASET_FOLDER###########################################
+
 # Input file path for raw dataset folder
 echo "[1] Please select a folder corresponding to the number for the raw dataset:"
 
@@ -34,7 +36,7 @@ raw_dataset_folder=$(cd "$raw_dataset_folder"; pwd)
 
 echo "------------------------------------------------------------------"
 
-##################################DATASET_FOLDER###########################################
+##################################PANEL_FILE################################################
 
 # Input file path for panel file
 echo "[2] Please input the file path for the panel excel file:"
@@ -59,7 +61,7 @@ panel_xcl=$(cd "$(dirname "$panel_xcl")"; pwd)/$(basename "$panel_xcl")
 
 echo "------------------------------------------------------------------"
 
-##################################MD_FILE##################################################
+##################################MD_FILE###################################################
 
 # Input the file path for the metadata(md)
 echo "[3] Please input the file path for the metadata(md) excel file:"
@@ -84,7 +86,7 @@ md_xcl=$(cd "$(dirname "$md_xcl")"; pwd)/$(basename "$md_xcl")
 
 echo "------------------------------------------------------------------"
 
-##################################PANEL_FILE################################################
+##################################OVERVIEW##################################################
 
 # File paths overview
 echo "Batch Correction will start with the following inputted files:"
