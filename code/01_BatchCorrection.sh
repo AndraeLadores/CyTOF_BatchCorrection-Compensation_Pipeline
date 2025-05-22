@@ -28,9 +28,13 @@ select dir in "${folders[@]}"; do
 done
 
 echo "You selected: $raw_dataset_folder"
+
+# Convert absolute path of folder to avoid any issues
+raw_dataset_folder=$(cd "$raw_dataset_folder"; pwd)
+
 echo "------------------------------------------------------------------"
 
-##################################################################################
+##################################DATASET_FOLDER###########################################
 
 # Input file path for panel file
 echo "[2] Please input the file path for the panel excel file:"
@@ -49,9 +53,13 @@ select dir in "${folders[@]}"; do
 done
 
 echo "You selected: $panel_xcl"
+
+# Convert absolute path of file to avoid any issues
+panel_xcl=$(cd "$(dirname "$panel_xcl")"; pwd)/$(basename "$panel_xcl")
+
 echo "------------------------------------------------------------------"
 
-##################################################################################
+##################################MD_FILE##################################################
 
 # Input the file path for the metadata(md)
 echo "[3] Please input the file path for the metadata(md) excel file:"
@@ -70,9 +78,13 @@ select dir in "${folders[@]}"; do
 done
 
 echo "You selected: $md_xcl"
+
+# Convert to absolute path of file to avoid any issues
+md_xcl=$(cd "$(dirname "$md_xcl")"; pwd)/$(basename "$md_xcl")
+
 echo "------------------------------------------------------------------"
 
-##################################################################################
+##################################PANEL_FILE################################################
 
 # File paths overview
 echo "Batch Correction will start with the following inputted files:"
