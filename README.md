@@ -137,3 +137,8 @@ After making sure R studio runs. We will need to download our project folder so 
 
 ### 5/19 - 5/20
 - Finally was able to fix the `select` code issue with the folder directories. I should be able to apply these with the rest of the codes for both batch correction and compensation.
+
+### 5/21 - 5/22
+- Fully changed the shell script to accomodate the `select` code which displays the file/folder paths and automatically accounts for the path when chosen.
+- I ran into some issues when trying to integrate this, mostly with pathing issues for R code but I fixed to by getting the absolute path of the directory regardless of where the relative directory is located.
+- I will be running this in Wynton with a big dataset.
