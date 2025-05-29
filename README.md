@@ -54,6 +54,21 @@ devtools::install_github("biosurf/cyCombine")
 
 ---
 
+
+## Instruction for UCSF's Wynton HPC Cluster
+
+1. First thing is to request access and create an account with Wynton.
+- Once you have created an account, you can now start using Wynton.
+
+2. Assuming you already have already downloaded the entire github package.
+- (Locally): Upload and replace your own designated files to the folder package if needed (ex: raw data files, panel, metadata, etc.).
+
+3. Once you have uploaded your files, then you will need to upload the package into Wynton.
+
+
+
+---
+
 ## Log
 
 ### This section was logged in R markdown
