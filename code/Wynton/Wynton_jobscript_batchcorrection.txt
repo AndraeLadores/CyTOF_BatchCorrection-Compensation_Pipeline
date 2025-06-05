@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# This is the job script needed to run on Wynton
+
+#$ -cwd                               # Run from current directory
+#$ -N batch_correction                # Batch Correction
+#$ -l mem_free=64G,h_vmem=74          # Memory size
+#$ -l h_fsize=100G                    # File size limit of output files
+#$ -o log_batchcorrection.txt         # Standard output log
+#$ -e err_batchcorrection.txt         # Error log
+
+# Run script
+bash ./01_BatchCorrection_batch.sh
